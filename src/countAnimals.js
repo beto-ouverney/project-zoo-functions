@@ -8,7 +8,6 @@ function countAnimals(animal) {
     return obj;
   }
   const keys = Object.keys(animal);
-  console.log(keys);
   const values = Object.values(animal);
   const filterName = (elementAnimal) => elementAnimal.name === values[0];
   const filterSex = (elementAnimal) => elementAnimal.sex === values[1];
