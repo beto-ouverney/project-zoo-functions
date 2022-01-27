@@ -30,7 +30,6 @@ const days = (param) => param.reduce((acum, day, ind) =>
     }), {});
 
 const getDefaultSchedule = (param) => {
-  console.log(param);
   const schedule = days(param);
   if (param.includes('Monday')) {
     schedule.Monday.officeHour = 'CLOSED';
@@ -57,7 +56,5 @@ function getSchedule(scheduleTarget) {
 
   return schedule;
 }
-
-console.log(getSchedule('lions'));
 
 module.exports = getSchedule;
