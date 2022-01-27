@@ -16,9 +16,9 @@ const defaultResult = () => animalsRegions.reduce((acum, species, index) => (
 const includeNamesResult = () => animalsRegions.reduce((acum, species, ind) => (
   {
     ...acum,
-    [regions[ind]]: species.map((elem) => (
+    [regions[ind]]: species.map((animal) => (
       {
-        [elem.name]: elem.residents.map((newElem) => newElem.name),
+        [animal.name]: animal.residents.map((newAnimal) => newAnimal.name),
       })),
   }
 ), {});
@@ -26,9 +26,9 @@ const includeNamesResult = () => animalsRegions.reduce((acum, species, ind) => (
 const sortNamesResult = () => animalsRegions.reduce((acum, species, index) => (
   {
     ...acum,
-    [regions[index]]: species.map((elem) => (
+    [regions[index]]: species.map((animal) => (
       {
-        [elem.name]: elem.residents.map((newElem) => newElem.name).sort(),
+        [animal.name]: animal.residents.map((newAnimal) => newAnimal.name).sort(),
       })),
   }
 ), {});
@@ -36,9 +36,9 @@ const sortNamesResult = () => animalsRegions.reduce((acum, species, index) => (
 const sexNotSortResult = (sex) => animalsRegions.reduce((acum, species, index) => (
   {
     ...acum,
-    [regions[index]]: species.map((el) => (
-      { // el: element, nEl: new element, nnEl: new new element
-        [el.name]: el.residents.filter((nEl) => nEl.sex === sex).map((nnEl) => nnEl.name),
+    [regions[index]]: species.map((animal) => (
+      {
+        [animal.name]: animal.residents.filter((nAn) => nAn.sex === sex).map((nnAn) => nnAn.name),
       })),
   }
 ), {});
@@ -46,9 +46,9 @@ const sexNotSortResult = (sex) => animalsRegions.reduce((acum, species, index) =
 const sexAndSortResult = (sex) => animalsRegions.reduce((acum, species, index) => (
   {
     ...acum,
-    [regions[index]]: species.map((el) => (
-      { // el: element, nEl: new element, nnEl: new new element
-        [el.name]: el.residents.filter((nEl) => nEl.sex === sex).map((nnEl) => nnEl.name).sort(),
+    [regions[index]]: species.map((an) => (
+      {
+        [an.name]: an.residents.filter((nAn) => nAn.sex === sex).map((nnAn) => nnAn.name).sort(),
       })),
   }
 ), {});
@@ -64,7 +64,7 @@ function conditions(options) {
     return includeNamesResult();
   }
   const maleOrFemale = options.sex;
-  if (options.sorted) { // filter by sex and sort
+  if (options.sorted) {
     return sexAndSortResult(maleOrFemale);
   }
   return sexNotSortResult(maleOrFemale);
