@@ -52,7 +52,7 @@ const sexAndSortResult = (sex) => animalsRegions.reduce((acum, species, index) =
       })),
   }
 ), {});
-
+//cond
 function conditions(options) {
   if (!options.includeNames) {
     return defaultResult();
