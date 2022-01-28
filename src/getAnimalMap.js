@@ -33,12 +33,16 @@ const sortNamesResult = () => animalsRegions.reduce((acum, species, index) => (
   }
 ), {});
 
+const filterAnimalBySex = (sex) => (animal) => animal.sex === sex;
+
+const mapAnimalName = (nAnimal) => nAnimal.name;
+
 const sexNotSortResult = (sex) => animalsRegions.reduce((acum, species, index) => (
   {
     ...acum,
     [regions[index]]: species.map((animal) => (
       {
-        [animal.name]: animal.residents.filter((nAn) => nAn.sex === sex).map((nnAn) => nnAn.name),
+        [animal.name]: animal.residents.filter(filterAnimalBySex(sex)).map(mapAnimalName),
       })),
   }
 ), {});
@@ -48,7 +52,7 @@ const sexAndSortResult = (sex) => animalsRegions.reduce((acum, species, index) =
     ...acum,
     [regions[index]]: species.map((an) => (
       {
-        [an.name]: an.residents.filter((nAn) => nAn.sex === sex).map((nnAn) => nnAn.name).sort(),
+        [an.name]: an.residents.filter(filterAnimalBySex(sex)).map(mapAnimalName).sort(),
       })),
   }
 ), {});
