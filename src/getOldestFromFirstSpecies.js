@@ -8,7 +8,7 @@ function getOldestFromFirstSpecies(id) {
   const firstSpecie = employees.find((employee) => employee.id === id).responsibleFor[0];
   const findFirstAnimal = (animal) => animal.id === firstSpecie;
   const firstAnimal = species.find(findFirstAnimal).residents;
-  // função retirada do stackoverflow para retirada do maior valor de um propriedade de um array de objetos
+  // função retirada do stackoverflow para retirada do maior valor de uma propriedade de um array de objetos
   const bigger = Math.max(...firstAnimal.map((animal) => animal.age));
   const result = firstAnimal.find((animal) => animal.age === bigger);
 
